@@ -2,6 +2,7 @@ package signer
 
 import (
 	"fmt"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"os"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
