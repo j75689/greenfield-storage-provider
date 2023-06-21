@@ -298,7 +298,7 @@ func (client *GreenfieldChainSignClient) RejectUnSealObject(
 		if errors.IsOf(err, sdkErrors.ErrWrongSequence) {
 			// if nonce mismatch, wait for next block, reset nonce by querying the nonce on chain
 			nonce, nonceErr := client.getNonceOnChain(ctx, client.greenfieldClients[scope])
-			if err != nil {
+			if nonceErr != nil {
 				log.CtxErrorw(ctx, "failed to get seal account nonce", "error", nonceErr)
 				ErrRejectUnSealObjectOnChain.SetError(fmt.Errorf("failed to get seal account nonce, error: %v", nonceErr))
 				return nil, ErrRejectUnSealObjectOnChain
@@ -349,7 +349,7 @@ func (client *GreenfieldChainSignClient) DiscontinueBucket(ctx context.Context, 
 	if errors.IsOf(err, sdkErrors.ErrWrongSequence) {
 		// if nonce mismatch, wait for next block, reset nonce by querying the nonce on chain
 		nonce, nonceErr := client.getNonceOnChain(ctx, client.greenfieldClients[scope])
-		if err != nil {
+		if nonceErr != nil {
 			log.CtxErrorw(ctx, "failed to get seal account nonce", "error", nonceErr)
 			ErrDiscontinueBucketOnChain.SetError(fmt.Errorf("failed to get seal account nonce, error: %v", nonceErr))
 			return nil, ErrDiscontinueBucketOnChain
