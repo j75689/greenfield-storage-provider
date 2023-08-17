@@ -231,7 +231,7 @@ func (client *GreenfieldChainSignClient) SealObject(ctx context.Context, scope S
 		sealObject.GetBucketName(), sealObject.GetObjectName(), sealObject.GetGlobalVirtualGroupId(),
 		sealObject.GetSecondarySpBlsAggSignatures())
 
-	mode := tx.BroadcastMode_BROADCAST_MODE_ASYNC
+	mode := tx.BroadcastMode_BROADCAST_MODE_SYNC
 
 	var (
 		txHash   string
